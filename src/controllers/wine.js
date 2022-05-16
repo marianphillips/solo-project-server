@@ -1,5 +1,7 @@
+import { sendDataResponse, sendMessageResponse } from '../utils/responses.js'
+
 export const findWine = async (req, res) => {
-    return "Hello"
+    return sendMessageResponse(res, 400, 'Nothing happening')
     // const userToCreate = await User.fromJson(req.body)
   
     // try {
