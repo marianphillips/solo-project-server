@@ -1,4 +1,5 @@
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js'
+import { findWines } from '../domain/wine.js'
 
 export const findWine = async (req, res) => {
     return sendMessageResponse(res, 400, 'Nothing happening')
