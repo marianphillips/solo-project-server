@@ -13,14 +13,17 @@ export async function findWineById(id) {
     return wine
   }
 
-  export async function findManyWines(type) {
+  export async function findManyWines(req) {
+    const query = {}
+
+    if(req.body.type) query.type = req.body.type
+    if(req.body.body) query.body = req.body.body
+    if(req.body.sweet) query.sweet = parseInt(req.body.sweet)
+
+
     const wines = await dbClient.info.findMany({
-        where : {
-            type: {
-                equals: type
-            }
-        },
-    })
+        where : query
+        })
 
     return wines
   }

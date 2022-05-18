@@ -2,10 +2,10 @@ import { sendDataResponse, sendMessageResponse } from '../utils/responses.js'
 import { findWineById, findManyWines } from '../domain/wine.js'
 
 export const findWine = async (req, res) => {
-   console.log(req.body)
+
     try {  
-      const search = await findManyWines(req.body.type)
- 
+       const search = await findManyWines(req)
+    
       if (!search) {
         return sendMessageResponse(res, 400, 'no match')
       }  
