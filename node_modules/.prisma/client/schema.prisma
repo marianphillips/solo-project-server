@@ -8,7 +8,28 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model WineTest {
+model Wine {
   id           Int           @id @default(autoincrement())
-  name         String        @unique
+  producer     String           
+  name         String
+  description  String
+  price        Int           
+  imageUrl     String
+  url          String
+  info         Info?         
+}
+
+model Info {
+  id           Int     @id @default(autoincrement())
+  wineId       Int     @unique
+  wine         Wine    @relation(fields: [wineId], references: [id])
+  type         String
+  varietal     String
+  natural      Boolean
+  vegan        Boolean
+  body         String
+  sweet        Int
+  primary      String
+  secondary    String
+  tertiary     String
 }

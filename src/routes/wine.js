@@ -3,7 +3,7 @@ import { findWine } from '../controllers/wine.js'
 
 const router = Router()
 
-router.get('/', findWine)
+router.post('/', findWine)
 
 
 export default router
