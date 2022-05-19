@@ -17,11 +17,9 @@ export async function findWineById(id) {
     const query = {}
 
     if(req.body.type) query.type = req.body.type
-    if(req.body.body) query.body = req.body.body
-    if(req.body.sweet) query.sweet = parseInt(req.body.sweet)
 
 
-    const wines = await dbClient.info.findMany({
+    const wines = await dbClient.wine.findMany({
         where : query
         })
 

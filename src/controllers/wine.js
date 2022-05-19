@@ -10,7 +10,7 @@ export const findWine = async (req, res) => {
         return sendMessageResponse(res, 400, 'no match')
       }  
 
-      const wine = await findWineById(search[0].wineId)
+      const wine = search[2]
 
       if (!wine) {
         return sendMessageResponse(res, 400, 'wine does not exist in db')
