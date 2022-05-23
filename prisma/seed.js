@@ -4,7 +4,7 @@ import fs from 'fs'
 const db = new prisma.PrismaClient()
 const results = [];
 
-fs.createReadStream('prisma/winedata.csv')
+fs.createReadStream('prisma/winedatafinal.csv')
   .pipe(csv())
   .on('data', (data) => results.push(data))
   .on('end', () => {
