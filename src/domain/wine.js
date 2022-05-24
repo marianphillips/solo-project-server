@@ -33,7 +33,7 @@ export async function findWineById(id) {
 
     if(req.body.varietals.length !== 0) {
         for(let v of req.body.varietals) {
-            if(v) {
+            if(v && character !== "na") {
                 orQuery.push({
                     varietal: {
                         contains: v
@@ -45,7 +45,7 @@ export async function findWineById(id) {
 
     if(req.body.characteristics.length !== 0) {
         for(let character of req.body.characteristics) {
-            if(character) {
+            if(character && character !== "na") {
                 orQuery.push({
                     characteristics: {
                         contains: character

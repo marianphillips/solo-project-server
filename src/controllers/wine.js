@@ -10,8 +10,8 @@ import {
 } from "../domain/wine.js";
 
 export const findWine = async (req, res) => {
-  //get list of wines matching criteria, reducing criteria as you go until there is a match
 
+  //get list of wines matching criteria, reducing criteria as you go until there is a match
   try {
     let search = await fullSearch(req);
 
@@ -35,7 +35,7 @@ export const findWine = async (req, res) => {
       search = await basicSearch(req);
     }
 
-      //filter of results again through characteristics
+      //filter results again through chosen characteristics
     const filteredSearch = search.filter(wine => {
       for(let character of req.body.characteristics) {
         if(wine.characteristics.includes(character)) {
@@ -49,15 +49,25 @@ export const findWine = async (req, res) => {
       search = filteredSearch
     }
 
-      //check for particular ids and set wine to push certain brands
+    //check for particular ids and set wine to push certain bottles
+    let wine
 
-      const maxRandom = search.length;
 
-      const wine = search[Math.floor(Math.random() * maxRandom)];
-      console.log(wine)
-      if (!wine) {
-        return sendMessageResponse(res, 400, "wine does not exist in db");
+    for(const searchWine of search) {
+      if(searchWine.id === 13 || searchWine.id === 14) {
+        wine = searchWine
       }
+    }
+
+    if(!wine) {
+      const maxRandom = search.length;
+      const randomWine = Math.floor(Math.random() * maxRandom)
+      wine = search[randomWine];
+    }     
+
+    if (!wine) {
+        return sendMessageResponse(res, 400, "wine does not exist in db");
+    }
 
       return sendDataResponse(res, 201, wine);
     }
