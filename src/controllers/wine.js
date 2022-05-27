@@ -53,11 +53,11 @@ export const findWine = async (req, res) => {
     let wine
 
 
-    for(const searchWine of search) {
-      if(searchWine.id === 13 || searchWine.id === 14) {
-        wine = searchWine
-      }
-    }
+    // for(const searchWine of search) {
+    //   if(searchWine.id === 13 || searchWine.id === 14) {
+    //     wine = searchWine
+    //   }
+    // }
 
     if(!wine) {
       const maxRandom = search.length;
